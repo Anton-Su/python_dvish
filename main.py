@@ -1,1 +1,1 @@
-print(hihihiha)
+print(1)
