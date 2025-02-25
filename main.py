@@ -1,12 +1,12 @@
-from math import cos, tan, log
-
-def main(y, x, z):
-    first = pow(tan(pow(y, 3) + pow(z, 2)), 7) - pow(x, 2)
-    sec = 97 * pow((50 * y + 10 * pow(y, 2) + pow(x, 3)), 2)
-    third = 92 * pow(cos(z), 4)
-    fourth = pow((52 + pow(y, 3) + 89 * pow(z, 2)), 3)
-    fifth = 10 * pow(log(0.05 + pow(x, 2) / 38 + y, 2), 5)
-    return first - ((sec - third) / (fourth - fifth))
+from math import atan
 
 
-print(123131321321313)
+def main(n):
+    if n == 0:
+        return -0.24
+    if n == 1:
+        return 0.29
+    else:
+        return 34 * pow(atan(main(n-1)), 3) + main(n-2)
+
+main(5)
