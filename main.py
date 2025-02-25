@@ -7,3 +7,6 @@ def main(y, x, z):
     fourth = pow((52 + pow(y, 3) + 89 * pow(z, 2)), 3)
     fifth = 10 * pow(log(0.05 + pow(x, 2) / 38 + y, 2), 5)
     return first - ((sec - third) / (fourth - fifth))
+
+
+print(123131321321313)
