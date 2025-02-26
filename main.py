@@ -78,10 +78,13 @@ utility_functions = ['exp', 'exp', 'exp', 'exp', 'exp', 'step']
 name_po = ['Recuva', 'EaseUS Data Recovery Wizard', 'R-Studio', 'Disk Drill']
 
 def main():
+    print("MAUT:")
     maut_method(matritsa_kreteria, weights_kriteria, utility_functions)
     print("--------------------")
+    print("WIKOR:")
     wikor_method(matritsa_kreteria, weights_kriteria, 0.5)
     print("--------------------")
+    print("WSM:")
     weighted_sum_method(matritsa_kreteria, weights_kriteria)
     print("--------------------")
 
