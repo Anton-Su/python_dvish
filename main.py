@@ -28,7 +28,7 @@ def maut_method(matritsa_kriteria, weights_kriteria, utility_functions, step_siz
     for i in range(0, X.shape[1]):
         if (utility_functions[i] == 'exp'):
             ArrExp = np.vectorize(u_exp)
-            X[:, i] = ArrExp(X[:, i])
+            X[:, i] = ArrExp(X[:, i]) # к столбцу i применяется результат
         elif (utility_functions[i] == 'step'):
             ArrStep = np.vectorize(u_step)
             X[:, i] = ArrStep(X[:, i], step_size)
@@ -40,7 +40,7 @@ def maut_method(matritsa_kriteria, weights_kriteria, utility_functions, step_siz
             X[:, i] = ArrLog(X[:, i])
     for i in range(0, X.shape[1]):
         X[:, i] = X[:, i] * weights_kriteria[i]
-    Y = np.sum(X, axis=1)
+    Y = np.sum(X, axis=1) # сумма по строкам
     return rangirovanie(Y.tolist())
 
 
