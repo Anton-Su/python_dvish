@@ -1,13 +1,21 @@
+s = ({'SAS', 1966, 1985},
+     {'SAS', 1966, 1994},
+     {'SAS', 1966, 1974, 'MQL4'},
+     {'SAS', 1966, 1974, 'ASN.1'},
+     {'SAS', 1959, 1985, 'RED'},
+     {'SAS', 1959, 1985, 'PERL6'},
+     {'SAS', 1959, 1994, 'RED'},
+     {'SAS', 1959, 1994, 'PERL6'},
+     {'SAS', 1959, 1974},
+     {'X10', 1985},
+     {'X10', 1994},
+     {'X10', 1974},
+     {'YACC'})
 
 
-
-def main(H: set):
-    E = {i // 7 - 4 * i for i in H if 42 > i >= -48}
-    X = {3 * i + i // 7 for i in H if i >= 42 or i < -88}
-    alpha = {abs(i) for i in X if i >= 91 or i < 22}
-    return len(E | alpha) + sum(alpha)
+def main(r):
+    s1 = set(r)
+    return [i for i in range(len(s)) if not(len(s[i] - s1))][0]
 
 
-
-
-print(main({96, 34, 35, -93, 9, 81, 52, 55, 92, 30}))
+print(main([1966, 'ASN.1', 1994, 'X10', 'PERL6']))
