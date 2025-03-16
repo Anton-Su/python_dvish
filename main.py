@@ -15,7 +15,9 @@ s = ({'SAS', 1966, 1985},
 
 def main(r):
     s1 = set(r)
-    return [i for i in range(len(s)) if not(len(s[i] - s1))][0]
+    for i in range(len(s)):
+        if not(len(s[i] - s1)):
+            return i
 
 
-print(main([1966, 'ASN.1', 1994, 'X10', 'PERL6']))
+print(main([1959, 'ASN.1', 1994, 'YACC', 'PERL6']))
