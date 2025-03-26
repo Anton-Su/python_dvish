@@ -7,10 +7,16 @@ bit_positions = {
 
 
 def main(spisok: list) -> int:
-    result = 0
+    binary_string = ['0'] * 30
     for name, value in spisok:
-        shift, size = bit_positions[name]
-        maska = (1 << size) - 1
-        chiclo = (int(value) & maska) << shift
-        result |= chiclo
-    return result
+        start, length = bit_positions[name]
+        bin_value = bin(int(value))[2:][::-1].ljust(length, '0')[-length:]
+        binary_string[start:start + length] = bin_value  # Заменяем нужные биты в строке
+    return int(''.join(binary_string[::-1]), 2)
+
+
+
+print(main(([('C1', '72'), ('C2', '17'), ('C3', '51'), ('C5', '508')])))
+
+
+
