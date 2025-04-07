@@ -1,17 +1,21 @@
 dictionary = {}
 
-def main(stroka: str):
-    text = ''.join(stroka.split('\n')).strip('done.>>').replace(' ', '')
-    text = text.split('@')[1:]
-    text = [i.rstrip(';done.donew') for i in text]
-    for stroka in text:
-        stroka = stroka.replace("'", "")
-        key, value = stroka.split(':')
-        value = value.strip('#').strip('()').split(';')
-        dictionary[key] = value
-    return dictionary
+def main(massiv: list) -> list:
+    massiv = list(zip(*massiv))[1:]
+    massiv = [list(i) for i in massiv]
+    massiv[0] = [1 if massiv[0][i] == 'true' else 0
+                 for i in range(len(massiv[0]))]
+    sec = []
+    for i in range(len(massiv[1])):
+        rasdelenie = massiv[1][i].split('|')
+        massiv[1][i] = rasdelenie[0].split(' ')[0]
+        sec.append('.'.join(rasdelenie[1].split('.')[::-1]).
+                   replace('.', '/'))
+    massiv.append(sec)
+    massiv = list(zip(*massiv))
+    massiv = sorted(massiv, key=lambda x: (x[0], x[1]))
+    return list(zip(*massiv))
 
 
-dannie = "<< do new @'avea' : #('isve_803'; 'orisor' ; 'lemaat' ); done. do new\n@'dimaon_947' : #( 'istele'; 'dior' ); done. do new @'geceso_976'\n:#('quso_200' ; 'ratian_166' ); done. do new @'diorve_14' :#( 'tevere'\n; 'onte_700' ); done.>>"
-
+dannie = [[None, 'true', 'Шицамяк Захар|17.04.00'], [None, 'true', 'Натий Демид|23.04.00'], [None, 'true', 'Фуфимиди Елисей|05.01.99'], [None, 'false', 'Зилолиди Иван|09.02.03']]
 print(main(dannie))
